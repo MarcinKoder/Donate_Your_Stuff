@@ -32,7 +32,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .dataSource(dataSource)
                 .passwordEncoder(passwordEncoder())
                 .usersByUsernameQuery("SELECT email, password, true FROM users WHERE email = ?")
-                .authoritiesByUsernameQuery("SELECT u.email, ur.role FROM users_roles ur JOIN users u " +
+                .authoritiesByUsernameQuery("SELECT u.email, ur.roles FROM users_roles ur JOIN users u " +
                         "ON u.id = ur.user_id WHERE u.email = ?");
     }
 
@@ -53,6 +53,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/","/home").permitAll()
                 .antMatchers("/user/**").hasRole("USER")
                 .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/css/**").permitAll()
+                .antMatchers("/images/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
