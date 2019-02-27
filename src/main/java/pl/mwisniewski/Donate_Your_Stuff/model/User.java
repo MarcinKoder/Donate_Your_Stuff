@@ -39,6 +39,9 @@ public class User {
     @OneToMany(mappedBy = "user")
     private List<Donate> userDonatesList;
 
+    @OneToMany(mappedBy = "user", cascade = {CascadeType.ALL} , targetEntity = UserRole.class)
+    private List<UserRole> userRoles;
+
     @Override
     public String toString() {
         return "User{" +
@@ -110,5 +113,13 @@ public class User {
 
     public void setUserDonatesList(List<Donate> userDonatesList) {
         this.userDonatesList = userDonatesList;
+    }
+
+    public List<UserRole> getUserRoles() {
+        return userRoles;
+    }
+
+    public void setUserRoles(List<UserRole> userRoles) {
+        this.userRoles = userRoles;
     }
 }

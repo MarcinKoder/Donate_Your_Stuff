@@ -4,7 +4,9 @@ import javax.persistence.*;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Objects;
 
@@ -32,6 +34,8 @@ public class Donate {
     private Charity charity;
 
     @Column
+    private boolean status; // 0 - nieoddany, 1 - oddany
+    @Column
     private String city;
     @Column
     private String street;
@@ -40,14 +44,35 @@ public class Donate {
     @Column
     private String phone;
     @Column
-    private String date;
+    private LocalDate date;
     @Column
-    private String hour;
-    @Column
-    private LocalDateTime dateOfPickup;
-
+    private LocalTime hour;
     @Column(name = "remarks")
     private String additionalRemarks;
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
+
+    public LocalDate getDate() {
+        return date;
+    }
+
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
+
+    public LocalTime getHour() {
+        return hour;
+    }
+
+    public void setHour(LocalTime hour) {
+        this.hour = hour;
+    }
 
     @Override
     public String toString() {
@@ -63,7 +88,7 @@ public class Donate {
                 ", phone='" + phone + '\'' +
                 ", date='" + date + '\'' +
                 ", hour='" + hour + '\'' +
-                ", dateOfPickup=" + dateOfPickup +
+                ", status" + status + '\'' +
                 ", additionalRemarks='" + additionalRemarks + '\'' +
                 '}';
     }
@@ -153,29 +178,6 @@ public class Donate {
         this.phone = phone;
     }
 
-    public String getDate() {
-        return date;
-    }
-
-    public void setDate(String date) {
-        this.date = date;
-    }
-
-    public String getHour() {
-        return hour;
-    }
-
-    public void setHour(String hour) {
-        this.hour = hour;
-    }
-
-    public LocalDateTime getDateOfPickup() {
-        return dateOfPickup;
-    }
-
-    public void setDateOfPickup(LocalDateTime dateOfPickup) {
-        this.dateOfPickup = dateOfPickup;
-    }
 
     public String getAdditionalRemarks() {
         return additionalRemarks;
