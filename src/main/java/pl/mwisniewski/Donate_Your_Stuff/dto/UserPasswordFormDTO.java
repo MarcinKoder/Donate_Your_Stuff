@@ -16,6 +16,8 @@ public class UserPasswordFormDTO {
 
     private String password;
 
+    private String confirmedPassword;
+
     public Long getId() {
         return id;
     }
@@ -54,5 +56,13 @@ public class UserPasswordFormDTO {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmedPassword() {
+        return confirmedPassword;
+    }
+
+    public void setConfirmedPassword(String confirmedPassword) {
+        this.confirmedPassword = confirmedPassword;
     }
 }
