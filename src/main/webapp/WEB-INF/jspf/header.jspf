@@ -11,11 +11,11 @@
     <sec:authorize access="isAuthenticated()">
         <ul class="nav--actions">
             <li class="logged-user">
-                Witaj ${SPRING_SECURITY_LAST_USERNAME}
+                Witaj ${sessionScope.userName}
                 <ul class="dropdown">
-                    <li><a href="#">Profil</a></li>
-                    <li><a href="#">Ustawienia</a></li>
-                    <li><a href="#">Moje zbiórki</a></li>
+                    <li><a href="/user/dashboard">Profil</a></li>
+                    <li><a href="/user/settings">Ustawienia</a></li>
+                    <li><a href="/user/donates">Moje donacje</a></li>
                     <li><a href="/logout">Wyloguj</a></li>
                 </ul>
             </li>
@@ -24,8 +24,8 @@
     <ul>
         <li><a href="/" class="btn btn--without-border active">Start</a></li>
         <li><a href="#" class="btn btn--without-border">O co chodzi?</a></li>
-        <li><a href="#" class="btn btn--without-border">O nas</a></li>
+        <li><a href="/about" class="btn btn--without-border">O nas</a></li>
         <li><a href="#" class="btn btn--without-border">Fundacje i organizacje</a></li>
-        <li><a href="#" class="btn btn--without-border">Kontakt</a></li>
+        <li><a href="/contact" class="btn btn--without-border">Kontakt</a></li>
     </ul>
 </nav>
